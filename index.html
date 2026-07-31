@@ -1,18 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Abdure's page</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdurahman | Future Software Developer</title>
 
+  <!-- Link to our CSS file -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="content">
-    <h1>I am Abdurahman</h1>
-    <h2>my goal:become software developer</h2>
-    <p> I am an INSA Talent student learning software development.
-        <br>
-        My goal is to become a skilled developer and build useful applications.
-    </p>
+
+  <!-- ============ NAVIGATION BAR ============ -->
+  <header class="navbar">
+    <div class="nav-container">
+      <h1 class="logo">Abdurahman</h1>
+
+      <!-- Hamburger button (only visible on small screens) -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Navigation links -->
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
+
+  <!-- ============ HOME SECTION ============ -->
+  <section id="home" class="section home-section">
+    <div class="home-content">
+      <h2 class="home-name">Abdurahman</h2>
+      <p class="home-title">Future Software Developer</p>
+      <p class="home-intro">
+        I am an INSA Talent student learning software development.
+        My goal is to become a skilled developer and build useful applications.
+      </p>
+      <!-- This button uses JavaScript to smoothly scroll to Projects -->
+      <button class="btn primary-btn" id="viewProjectsBtn">View My Projects</button>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT SECTION ============ -->
+  <section id="about" class="section about-section">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <p>
+        I am a university student learning programming, web development,
+        and software engineering. I enjoy solving problems with code and
+        I'm always excited to learn new tools and technologies that help
+        me grow as a developer.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS SECTION ============ -->
+  <section id="projects" class="section projects-section">
+    <h2 class="section-title">My Projects</h2>
+    <div class="card-grid">
+      <div class="card project-card">
+        <h3>Quiz Application</h3>
+        <p>A simple interactive quiz app built to practice JavaScript logic and DOM manipulation.</p>
+        <a href="https://github.com/abdurahman072/quiz1"
+   class="btn small-btn"
+   target="_blank">
+    View Project
+</a>
+      </div>
+      <div class="card project-card">
+        <h3>Personal Portfolio</h3>
+        <p>This very website! Built with HTML, CSS, and JavaScript to showcase my skills.</p>
+        <a href="#" class="btn small-btn">View Project</a>
+      </div>
+      <div class="card project-card">
+        <h3>Future Project</h3>
+        <p>A placeholder for my next big idea, coming soon as I continue learning.</p>
+        <a href="#" class="btn small-btn">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT SECTION ============ -->
+  <section id="contact" class="section contact-section">
+    <h2 class="section-title">Contact Me</h2>
+    <p>Want to get in touch? Click the button below!</p>
+   <a
+    href="https://mail.google.com/mail/?view=cm&fs=1&to=abdurahman097293@gmail.com"
+    target="_blank"
+    class="btn primary-btn"
+>
+    Say Hello
+</a>
+
+    <!-- This message will be shown/hidden by JavaScript -->
+    <p id="contactMessage" class="contact-message"></p>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <p>&copy; 2026 Abdurahman. Built with HTML, CSS &amp; JavaScript.</p>
+  </footer>
+
+  <!-- Link to our JavaScript file (placed at the end so HTML loads first) -->
+  <script src="do.js"></script>
 </body>
 </html>

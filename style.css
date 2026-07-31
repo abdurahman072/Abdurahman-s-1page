@@ -1,64 +1,352 @@
+/* ==========================================================
+   GLOBAL RESET & BASE STYLES
+   ========================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* makes width/height calculations easier */
+}
+
+html {
+  scroll-behavior: smooth; /* enables smooth scrolling for anchor links */
+}
+
 body {
-    background-image: url("background.png");
-    background-size: cover;
-    background-position: center;
-    color: white;min-height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+  line-height: 1.6;
 
+  /* Background image setup */
+  background-image: url("background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* keeps background still while scrolling */
+  background-repeat:no-repeat;
 }
-h1 {
-    color: white;
-    font-size: 60px;
-    text-align: center;
-    animation: moveDown 1s ease-in-out;
-}
-h2 {
-    color: lightblue;
-    font-size: 40px;
-    animation: moveDown 1s ease-in-out;
-    animation-delay: 1s;
-}
-   p {
-    color: white;
-    font-size: 20px;
-    text-align: center;
 
-    width: 600px;
-    margin: 0 auto;
+/* A semi-transparent overlay behind content so text stays readable
+   over the background image. We apply this on each section instead
+   of the body so it works well with background-attachment: fixed. */
+.section {
+  padding: 100px 20px 6px;
+  scroll-margin-top: 70px; /* prevents navbar from covering section top when scrolled to */
+}
 
+.home-section,
+.about-section,
+.projects-section,
+.contact-section {
+  background-color: rgba(226, 211, 211, 0.882);
+}
+
+.skills-section {
+  background-color: hsla(240, 8%, 77%, 0.9);
+}
+
+/* ==========================================================
+   NAVIGATION BAR
+   ========================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(20, 20, 30, 0.95);
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 15px 20px;
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.hamburger {
+  display: none; /* hidden on desktop, shown on mobile via media query */
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #4dabf7; /* hover effect */
+}
+
+/* ==========================================================
+   BUTTONS
+   ========================================================== */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  background-color: #4dabf7;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #339af0;
+  transform: translateY(-3px); /* small "lift" hover effect */
+}
+
+.small-btn {
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* ==========================================================
+   HOME SECTION
+   ========================================================== */
+.home-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.home-content {
+  max-width: 700px;
+  animation: fadeInUp 0.8s ease-out; /* simple entrance animation */
+}
+
+.home-name {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  color: #1c1c1c;
+}
+
+.home-title {
+  font-size: 1.4rem;
+  color: #4dabf7;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.home-intro {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #444;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================
+   SECTION TITLES
+   ========================================================== */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #1c1c1c;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #4dabf7;
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+/* ==========================================================
+   ABOUT SECTION
+   ========================================================== */
+.about-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+/* ==========================================================
+   CARD GRID (used by Skills & Projects)
+   ========================================================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px); /* hover "lift" effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  color: #4dabf7;
+}
+
+.card p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================
+   CONTACT SECTION
+   ========================================================== */
+.contact-section {
+  text-align: center;
+}
+
+.contact-section p {
+  margin-bottom: 20px;
+}
+
+.contact-message {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2b8a3e;
+  opacity: 0; /* hidden by default, JS will reveal it */
+  transition: opacity 0.4s ease;
+}
+
+.contact-message.show {
+  opacity: 1;
+}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(20, 20, 30, 0.95);
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================
+   RESPONSIVE DESIGN
+   ========================================================== */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+/* Mobile phones & small tablets: show hamburger, hide inline nav links */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(20, 20, 30, 0.97);
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+
+    /* Hidden by default using max-height trick so it can animate open/closed */
+    max-height: 0;
     overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid white;
+    transition: max-height 0.4s ease;
+  }
 
-    animation: typing 5s steps(60), blink 1s infinite;
-}
-.content {
+  /* This class is toggled by JavaScript to open the menu */
+  .nav-links.open {
+    max-height: 300px;
+  }
+
+  .nav-links li {
+    width: 100%;
     text-align: center;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .home-name {
+    font-size: 2.2rem;
+  }
+
+  .home-title {
+    font-size: 1.2rem;
+  }
 }
 
-@keyframes moveDown {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
+/* Very small phones */
+@media (max-width: 400px) {
+  .section {
+    padding: 90px 15px 50px;
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-@keyframes typing {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 600px;
-    }
-}
-
-@keyframes blink {
-    50% {
-        border-color: transparent;
-    
-}
+  .home-name {
+    font-size: 1.8rem;
+  }
 }
